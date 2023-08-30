@@ -86,7 +86,7 @@ async function addDepartment() {
       message: "What department would you like to add to the database?"
     }
   ]);
-  const departmentData = await db.promise().query("INSERT INTO department (name) VALUES (?)", [response.department_name])
+  // const departmentData = await db.promise().query("INSERT INTO department (name) VALUES (?)", [response.department_name])
 };
 
 // function to add a role based on user input to the database
@@ -177,4 +177,5 @@ async function updateEmployeeRole() {
   const updatedEmployee = await db.promise().query("UPDATE employee SET role_id=? WHERE id=?", [response.employee_role, response.employee])
   mainMenu();
 }
+
 mainMenu();
