@@ -1,15 +1,39 @@
 const inquirer = require("inquirer");
-const { table } = require("table");
-const db = require("./config/connection");
 const showTable = require("./utility/table");
-const { addDepartment, addRole, addEmployee, updateEmployeeRole, viewAllDepartments, viewAllRoles, viewAllEmployees, viewEmployeesByDepartment, viewEmployeesByManager, viewDepartmentBudget, deleteDepartment, deleteRole, deleteEmployee, exit } = require("./utility/queries");
+const { addDepartment, addRole, addEmployee, updateEmployeeRole, viewAllDepartments, viewAllRoles, viewAllEmployees, viewEmployeesByDepartment, viewEmployeesByManager, viewDepartmentBudget, deleteDepartment, deleteRole, deleteEmployee, exit } = require("./utility/mainMenu");
 const mainMenu = require("./utility/mainMenu");
+
+function mainMenu() {
+    return inquirer.prompt([
+        {
+            message: "What would you like to do?",
+            type: "list",
+            name: "program",
+            choices: [
+                "View All Departments",
+                "View All Roles",
+                "View All Employees",
+                "View Employees By Department",
+                "View Employees By Manager",
+                "View Department Budget",
+                "Add Department",
+                "Add Role",
+                "Add Employee",
+                "Update Employee Role",
+                "Delete Department",
+                "Delete Role",
+                "Delete Employee",
+                "Exit"
+            ]
+        }
+    ]);
+}
 
 async function init() {
     let exitProgram = false;
     while (!exitProgram) {
-        let { action } = await mainMenu();
-        switch (action) {
+        let {program} = await mainMenu();
+        switch (program) {
             case "View All Departments":
                 showTable(await viewAllDepartments());
                 break;
