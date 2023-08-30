@@ -3,7 +3,7 @@ const showTable = require("./utility/table");
 const { addDepartment, addRole, addEmployee, updateEmployeeRole, viewAllDepartments, viewAllRoles, viewAllEmployees, viewEmployeesByDepartment, viewEmployeesByManager, viewDepartmentBudget, deleteDepartment, deleteRole, deleteEmployee, exit } = require("./utility/mainMenu");
 const mainMenu = require("./utility/mainMenu");
 
-function mainMenu() {
+function init() {
     return inquirer.prompt([
         {
             message: "What would you like to do?",
